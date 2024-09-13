@@ -6,28 +6,29 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+```
+```bash
 CREATE TABLE messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     sender_id INT NOT NULL,
     receiver_id INT NOT NULL,
     content TEXT,
-    image_url VARCHAR(255),  -- This field is for image storage (optional)
+    image_url VARCHAR(255),
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES users(id),
     FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
-
-
+```
+```bash
 CREATE TABLE images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
-    image_path VARCHAR(255) NOT NULL,  -- Path to image file
+    image_path VARCHAR(255) NOT NULL, 
     uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-
+```
+```bash
 CREATE TABLE chats (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user1_id INT NOT NULL,
@@ -36,6 +37,4 @@ CREATE TABLE chats (
     FOREIGN KEY (user1_id) REFERENCES users(id),
     FOREIGN KEY (user2_id) REFERENCES users(id)
 );
-
-
 ```
